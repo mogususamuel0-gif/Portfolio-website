@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Samuel Mogusu">
+        <meta name="description" content="Contact information of Samuel Mogusu">
+        <title>Contact Me | Samuel Mogusu</title>
+        <link rel="icon" href="img/paintbrush icon.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style3.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Contact Me</h1>
+            <nav aria-label="Primary navigation">
+                <ul>
+                    <li>
+                        <a href="index.html">Back to Website</a>
+                    </li>
+                    <li>
+                        <a href="hobbies.html">My Hobbies</a>
+                    </li>
+                    <li>
+                        <a href="contact.html" aria-current="page">Contact Me</a>
+                    </li>
+                </ul>
+            </nav>
+            <figure>
+                <div class="scribble-wobble">
+                <img src="img/Red_telephone.png" alt="Telephone" 
+                title="Call me"/></div>
+                <figcaption>
+                    Call or text me!🤙
+                </figcaption>
+            </figure>
+        </header>
+        <hr>
+        <main>
+            <section aria-labelledby="contact-form-heading">
+                <h2 id="contact-form-heading">My Contact Form</h2>
+                <form action="https://httpbin.org/get" method="get">
+                    <fieldset>
+                        <legend>Send Me a Message</legend>
+                        <p>
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name"
+                                placeholder="Your name" autocomplete="name" required>
+                        </p>
+                        <p>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email"
+                                placeholder="Your email" autocomplete="email" required>
+                        </p>
+                        <p>
+                            <label for="message">Your Message:</label>
+                            <textarea name="message" id="message"
+                                rows="10" placeholder="Type your message here" required></textarea>
+                        </p>
+                    </fieldset>
+                    <button type="submit">Send</button>
+                    <button type="reset">Reset</button>
+                </form>
+            </section>
+            <section aria-labelledby="residence-heading">
+                <h2 id="residence-heading">My Residence</h2>
+                <address>
+                    56 Five Star Road,<br>
+                    South C,<br>
+                    Nairobi 45043-00100.
+                    <br><br>
+                    Phone: <a href="tel:+254769719114">0769719114</a><br>
+                    Email: <a href="mailto:mogususamuel0@gmail.com">mogususamuel0@gmail.com</a>
+                </address>
+            </section>
+            
+        </main>
+        <hr>
+        <footer>
+            <p> Trademark &trade; Mogusu's Niffy Little website</p>
+        </footer>
+    </body>
+</html>

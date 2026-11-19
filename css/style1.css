@@ -1,0 +1,566 @@
+/* ===========================
+   style1.css — Home Page
+   Sketchy / Hand-Drawn Aesthetic
+   =========================== */
+
+/* ---------- Local Font ---------- */
+@font-face {
+    font-family: "FFF Tusj";
+    src: url("../fonts/FFF_Tusj.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #1a1a1a;
+    background-color: #ffffff;
+}
+
+/* Inline SVG filter for the hand-drawn wobbly effect */
+body::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.25s ease;
+    border-bottom: 2px dashed transparent;
+}
+
+a:hover,
+a:focus,
+a:focus-visible {
+    color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+a:focus-visible,
+summary:focus-visible,
+button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+hr {
+    border: none;
+    border-top: 3px dashed #1a1a1a;
+    margin: 0;
+    opacity: 0.3;
+}
+
+/* ---------- Sketch Utility ---------- */
+.sketch-border {
+    border: 3px solid #1a1a1a;
+}
+
+/* ---------- Header ---------- */
+.header {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    padding: 2rem 2rem 1.5rem;
+    text-align: center;
+    border-bottom: 4px solid #1a1a1a;
+    position: relative;
+}
+
+/* Notebook-hole dots along top */
+.header::before {
+    content: "● ● ● ● ● ● ● ● ● ● ● ●";
+    position: absolute;
+    top: 6px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #c0c0c0;
+    font-size: 0.6rem;
+    letter-spacing: 1.5rem;
+    pointer-events: none;
+}
+
+.header_h1 {
+    font-family: "FFF Tusj", cursive;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Sketch underline */
+.header_h1::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: -5%;
+    width: 110%;
+    height: 4px;
+    background: #2563eb;
+    transform: rotate(-0.8deg);
+    border-radius: 2px;
+}
+
+.header_nav {
+    margin-top: 0.75rem;
+}
+
+.header_ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.header_ul li a {
+    font-family: "Space Grotesk", sans-serif;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.45rem 1.1rem;
+    border: 2px solid #1a1a1a;
+    border-radius: 2px;
+    display: inline-block;
+    transition: all 0.2s ease;
+    transform: rotate(-0.5deg);
+    border-bottom: none;
+}
+
+.header_ul li:nth-child(2) a {
+    transform: rotate(0.6deg);
+}
+
+.header_ul li:nth-child(3) a {
+    transform: rotate(-0.3deg);
+}
+
+.header_ul li:nth-child(4) a {
+    transform: rotate(0.8deg);
+}
+
+.header_ul li a:hover,
+.header_ul li a:focus {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-bottom: none;
+    box-shadow: 4px 4px 0 #2563eb;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background-color: #ffffff;
+}
+
+.hero_h2 {
+    font-family: "FFF Tusj", cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+.hero_h2::after {
+    content: " ✏️";
+}
+
+.hero figure {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 3px solid #1a1a1a;
+    background-color: #ffffff;
+    box-shadow: 6px 6px 0 #2563eb, 10px 10px 0 #1a1a1a;
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: visible;
+}
+
+.hero figure:hover {
+    transform: rotate(0.5deg);
+    box-shadow: 8px 8px 0 #2563eb, 14px 14px 0 #1a1a1a;
+}
+
+/* ---------- Scribble Wobble Animation ---------- */
+@keyframes scribble-wobble {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    20%  { transform: translate(1px, -1px) rotate(-0.6deg); }
+    40%  { transform: translate(-1px, 1px) rotate(0.5deg); }
+    60%  { transform: translate(1px, 1px) rotate(-0.4deg); }
+    80%  { transform: translate(-1px, -1px) rotate(0.6deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.scribble-wobble {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scribble-wobble img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.scribble-wobble:hover img,
+.scribble-wobble:focus-within img,
+.scribble-wobble:active img {
+    animation: scribble-wobble 0.6s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scribble-wobble img {
+        animation: none;
+    }
+}
+
+
+/* ---------- Main ---------- */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+/* ---------- About ---------- */
+#about {
+    background-color: #ffffff;
+    border: 3px solid #1a1a1a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 5px 5px 0 #2563eb;
+    transform: rotate(0.3deg);
+}
+
+#about h2 {
+    font-family: "FFF Tusj", cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    display: inline-block;
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 0.25rem;
+}
+
+#about p {
+    font-size: 1.05rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* ---------- Aside — Trivia ---------- */
+aside {
+    background-color: #f5f8ff;
+    border: 2px dashed #1a1a1a;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transform: rotate(-0.5deg);
+    position: relative;
+}
+
+/* Tape strip effect */
+aside::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 30px;
+    width: 60px;
+    height: 20px;
+    background: rgba(37, 99, 235, 0.25);
+    border: 1px solid rgba(37, 99, 235, 0.4);
+    transform: rotate(-3deg);
+}
+
+aside h3 {
+    font-family: "FFF Tusj", cursive;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #2563eb;
+    margin-bottom: 0.75rem;
+}
+
+details {
+    cursor: pointer;
+}
+
+summary {
+    font-weight: 600;
+    color: #1a1a1a;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+}
+
+summary:hover {
+    color: #2563eb;
+}
+
+details[open] summary {
+    margin-bottom: 0.5rem;
+}
+
+details p {
+    padding-left: 1rem;
+    font-size: 0.95rem;
+    color: #444;
+    border-left: 3px solid #2563eb;
+}
+
+/* ---------- Stats Table ---------- */
+#mystats {
+    margin-top: 1rem;
+    background-color: #ffffff;
+    border: 3px solid #1a1a1a;
+    padding: 2rem;
+    box-shadow: 5px 5px 0 #1a1a1a;
+    transform: rotate(-0.4deg);
+}
+
+#mystats h2 {
+    font-family: "FFF Tusj", cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    display: inline-block;
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 0.25rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+caption {
+    font-family: "FFF Tusj", cursive;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: #2563eb;
+    padding: 0.75rem 0;
+    text-align: left;
+    caption-side: top;
+}
+
+thead {
+    background-color: #1a1a1a;
+}
+
+thead th {
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.9rem 1rem;
+    text-align: left;
+    border: 2px solid #1a1a1a;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f0f4ff;
+}
+
+tbody tr:hover {
+    background-color: #dbeafe;
+}
+
+tbody th,
+tbody td {
+    padding: 0.85rem 1rem;
+    border: 2px solid #1a1a1a;
+}
+
+tbody th {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+tfoot td {
+    padding: 0.75rem 1rem;
+    font-style: italic;
+    color: #666;
+    border: 2px solid #1a1a1a;
+    background-color: #fafafa;
+}
+
+#mystats > p {
+    margin-top: 1rem;
+}
+
+#mystats > p a {
+    display: inline-block;
+    font-weight: 600;
+    padding: 0.5rem 1.3rem;
+    border: 3px solid #1a1a1a;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+    transform: rotate(0.5deg);
+    border-bottom: 2px solid #1a1a1a;
+}
+
+#mystats > p a:hover {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 4px 4px 0 #2563eb;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #1a1a1a;
+    color: #d1d5db;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    border-top: 4px solid #2563eb;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    .header {
+        padding-inline: 1rem;
+    }
+
+    .header::before {
+        letter-spacing: 0.65rem;
+        white-space: nowrap;
+    }
+
+    .header_h1 {
+        font-size: 2.2rem;
+    }
+
+    .header_ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero_h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero figure {
+        max-width: 90%;
+    }
+
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    #about,
+    #mystats {
+        padding: 1.25rem;
+        transform: none;
+    }
+
+    aside {
+        transform: none;
+    }
+
+    table {
+        font-size: 0.85rem;
+        table-layout: fixed;
+    }
+
+    thead th,
+    tbody th,
+    tbody td,
+    tfoot td {
+        overflow-wrap: anywhere;
+    }
+
+    thead th,
+    tbody th,
+    tbody td {
+        padding: 0.65rem 0.5rem;
+    }
+
+    tbody th,
+    tbody td {
+        vertical-align: top;
+    }
+}
+
+@media (max-width: 360px) {
+    .header::before {
+        content: "● ● ● ● ● ●";
+        letter-spacing: 0.5rem;
+    }
+
+    .header_ul li,
+    .header_ul li a {
+        width: 100%;
+    }
+
+    table {
+        font-size: 0.78rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.03ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.03ms !important;
+    }
+
+    .stripped-art svg polyline {
+        stroke-dashoffset: 0;
+        animation: none;
+    }
+}
